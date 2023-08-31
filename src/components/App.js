@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid';
 import Header from './Header';
 import AddContact from './AddContact';
 import ContactList from './ContactList';
+import ContactDetails from './ContactDetails';
 function App() {
   const   LOCAL_STORAGE_KEY='Contacts';
   const [Contacts, setContacts] = useState(() => {
@@ -24,8 +25,6 @@ function App() {
       console.log(Contacts);
       setContacts([...Contacts, { id: nanoid(), ...Contact }]);
   }
-  //Use effects are actually react hooks(They allow you to do what class components do (like managing state and using lifecycle methods) without needing to write a class. Hooks provide a more straightforward and organized way to work with component logic.--Matlab agar form sa input la raha hain to hama uska ak object babana parta tha model classes sa bachna ka lia yaha hooks ko use karta hain) whcih is used for side functionalities like updating the heading under if the doctor login welcome dotor if patient welcome patient like this and also for managing data retrevial from db and insertion of the data into db
-  // While the props are used to pass the data from parent to child and so on 
   useEffect(()=>{
     localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(Contacts));
   },[Contacts]);
@@ -35,12 +34,15 @@ function App() {
     <Routes>
       <Route path='/' element={<ContactList Contacts={Contacts} getContactId={removeContactHandler} />} />
       <Route path='/add' element={<AddContact addContactHandler={addContactHandler} />} />
+      <Route path="/contact/:id" Component={ContactDetails} />
     </Routes>
   </Router>
   );
 }
 
 export default App;
+//Use effects are actually react hooks(They allow you to do what class components do (like managing state and using lifecycle methods) without needing to write a class. Hooks provide a more straightforward and organized way to work with component logic.--Matlab agar form sa input la raha hain to hama uska ak object babana parta tha model classes sa bachna ka lia yaha hooks ko use karta hain) whcih is used for side functionalities like updating the heading under if the doctor login welcome dotor if patient welcome patient like this and also for managing data retrevial from db and insertion of the data into db
+  // While the props are used to pass the data from parent to child and so on 
 //passing function as a prop like <ContactList Contacts={Contacts} getContactId={removeContactHandler}/>  removeContactHandler this is function passes as props and in the child we will access this function using props.getContactId and also pass it to nested child 
  {/* This is the best approach where we use render instaed of element its good when we pass props along with componenet routing it will creates the componenet that is rendered once and will use the previous state of the component again and again instead of creating the new componenet */}
 
