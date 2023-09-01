@@ -1,16 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useLocation } from "react-router-dom";
 import user from '../images/user.png';
 
 const ContactDetails = (props) => {
-    const { id } = useParams();
-    const contact = props.Contacts.find(contact => contact.id === id);
-
-    if (!contact) {
-        return <div>Loading...</div>;
-    }
-
-    const { name, email } = contact;
+    const location=useLocation();
+    console.log(location);
 
     return (
         <div className="main">
@@ -19,8 +13,8 @@ const ContactDetails = (props) => {
                     <img src={user} alt="user"></img>
                 </div>
                 <div className="content">
-                    <div className="header">{name}</div>
-                    <div className="description">{email}</div>
+                    <div className="header">abd</div>
+                    <div className="description">abd123</div>
                 </div>
             </div>
         </div>

@@ -6,15 +6,15 @@ const ContactList = (props) => {
         props.getContactId(id);
     };
     const renderContactList = props.Contacts.map((contact) => (
-        <ContactCard key={contact.id} contact={contact}  clickHandler={deleteContactHandler} />
-        //
+        <ContactCard key={contact.id} contact={contact} clickHandler={deleteContactHandler} />
     ));
+        
     
     return (
         <div className="main">
             <h2>
                 Contact List
-                <Link to={'/add'}>
+                <Link to={`/add`}>
                 <button className="ui button blue" style={{position:'fixed',right:'20px'}}>AddContact</button>
                 </Link>
                 

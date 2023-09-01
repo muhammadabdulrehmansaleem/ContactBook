@@ -34,7 +34,7 @@ function App() {
     <Routes>
       <Route path='/' element={<ContactList Contacts={Contacts} getContactId={removeContactHandler} />} />
       <Route path='/add' element={<AddContact addContactHandler={addContactHandler} />} />
-      <Route path="/contact/:id" Component={ContactDetails} />
+      <Route path="/contact/:id" element={<ContactDetails Contacts={Contacts} />} />
     </Routes>
   </Router>
   );
